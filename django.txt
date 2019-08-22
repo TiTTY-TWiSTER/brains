@@ -1,0 +1,22 @@
+django-admin startproject названиеПроекта - создаем новый проект (папку с проектом)
+
+manage.py runserver - запускаем отладочный сервер
+
+localhost:8000
+
+manage.py startapp newPrilozenie - создаем приложение в папке с проектом
+
+в папке проекта в файле settings.py регистрируем добавленные приложения
+
+в папке приложения, в файле views.py - пишем свой код
+from django.http import HttpResponse
+
+def index(request):
+	return HttpResponse('Здесь будет список.')
+
+далее необходимо прописать пути в файле проекта urls.py
+
+manage.py migrate
+
+manage.py shell
+

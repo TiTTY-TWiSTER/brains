@@ -1,0 +1,17 @@
+GIT
+
+git init (1 раз, создает папку .git)
+git add . (отслеживать все файлы)
+git commit -m "comment" («апомнить текущее состо€ние сайта и добавить коммент)
+git push origin название ветки (git push origin master) - закачать файлы на удаленный репозиторий (github)
+
+git branch branchName - создать новую ветку
+git checkout branchName - сменить ветку
+
+GitGub
+—оздать репозиторий
+—в€зать с папкой на компе (ѕункт Еor push an existing repository from the command line)
+
+ll - все содержимое где сейчас находишьс€ или dir
+cd .. - назад из папки 
+cd названиеѕапки - заходит в папку 
