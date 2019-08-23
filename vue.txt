@@ -15,4 +15,20 @@ methods:{ # здесь создаем функции
 @click - событие клик. Использование @click="название функции(можно без скобок,если не передаем параметры)"
 @mouseover
 
-$event.target.value - получение значения из input	
+$event.target.value - получение значения из input
+
+v-on:click="show = !show" - переключатель show = true или false
+	Пример:
+	<div id="demo">
+  		<button v-on:click="show = !show">
+   			 Переключить
+  		</button>
+
+  		<transition длительность :duration="{ enter: 500, leave: 800 }" name="fadeIn"> # анимация из библиотеки Animate.css
+    			<p v-if="show">привет</p>
+  		</transition>
+	</div>
+	так же в одном элементе несколько видов анимации:
+
+	enter-active-class="animated fadeIn" - любая анимация появления
+	leave-active-class="animated bounceOutRight" - исчезновения 	
