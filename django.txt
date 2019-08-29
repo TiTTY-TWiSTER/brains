@@ -6,17 +6,51 @@ localhost:8000
 
 manage.py startapp newPrilozenie - создаем приложение в папке с проектом
 
-в папке проекта в файле settings.py регистрируем добавленные приложения
+вырезаем папку с проектом создаем папку apps и в нее кладем папку с приложением
+в settings прописываем:
+	import os, sys
+	PROJECT_ROOT = os.path.dirname(__file__)
+	sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
 
-в папке приложения, в файле views.py - пишем свой код
-from django.http import HttpResponse
+далее в приложении создаем файл urls.py и в него пишем:
+	from django.urls import path
 
-def index(request):
-	return HttpResponse('Здесь будет список.')
+	from . import views
 
-далее необходимо прописать пути в файле проекта urls.py
+	urlpatterns = [
+		path('', views.index, name='index')
+	]
+в папке ПРОЕКТА в файле urls.py дописываем: #добавляем свое приложение
+	from django.contrib import admin
+	from django.urls import path, include
 
-manage.py migrate
+	urlpatterns = [
+		path('articles/',include('articles.urls')),
+   		path('admin/', admin.site.urls),
 
-manage.py shell
+	]
+в файле приложения views.py удаляем всё и пишем:
+	from django.http import HttpResponse
 
+	def index(request):
+		return HttpResponse("Привет, мир!")
+
+в файле приложения models.py пишем:
+	class Article(models.Model):
+		article_title = models.CharField('название статьи', max_length = 200)
+		article_text = models.TextField('текст статьи')
+		pub_date = models.DateTimeField('дата публикации')
+
+	class Comment(models.Model):
+		article = models.ForeignKey(Article, on_delete = models.CASCADE) - привязываем комментарии к статьям Article, CASCADE удаляет комментарии когда уд. статья
+		author_name = models.CharField("имя автора", max_length = 50)
+		comment_text = models.CharField('текст комментария', max_length=200)
+
+в settings.py прописываем наше приложение 'articles.apps.ArticlesConfig',
+
+manage.py makemigrations articles - теперь синхронизируем в консоле БД с models.py
+manage.py migrate -применяем миграции
+
+manage.py shell -интерактивная консоль Django
+
+	
