@@ -20,4 +20,12 @@ git rm file_name - удал€ет файл - тоже самое
 
 ll - все содержимое где сейчас находишьс€ или dir
 cd .. - назад из папки 
-cd названиеѕапки - заходит в папку 
+cd названиеѕапки - заходит в папку
+
+-- заливаем на гитхаб через консоль--
+git init
+git add --all
+git commit -a -m 'first commit'
+git remote add origin https://github.com/user/project.git !! помен€ть https на свой линк на репозиторий
+git pull --rebase origin master
+git push origin master

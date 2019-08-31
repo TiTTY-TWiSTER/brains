@@ -1,0 +1,14 @@
+импортируем библиотеки 
+import requests
+from bs4 import BeautifulSoup
+
+url = "ссылка на страницу"
+
+requests.get(url) - парсит данные если ок вернут результат Response 200
+
+r = requests.get(url)
+r.text - вернет html текст страницы
+
+далее - должно быть установлено pip install lxml
+soup = BeautifulSoup(r.text, "lxml") # передаем html в объект супа
+pages = soup.find("div", class_="название класса") # извлекаем из него то что нам нужно
