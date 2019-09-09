@@ -14,6 +14,7 @@ methods:{ # здесь создаем функции
 
 @click - событие клик. Использование @click="название функции(можно без скобок,если не передаем параметры)"
 @mouseover
+@keyup.enter="передаем функцию" - при нажатии на клавишу(в данном случае enter) выполняем что-либо нами написанное
 
 $event.target.value - получение значения из input
 
@@ -31,4 +32,17 @@ v-on:click="show = !show" - переключатель show = true или false
 	так же в одном элементе несколько видов анимации:
 
 	enter-active-class="animated fadeIn" - любая анимация появления
-	leave-active-class="animated bounceOutRight" - исчезновения 	
+	leave-active-class="animated bounceOutRight" - исчезновения
+
+ПЕРЕБОР МАСИВА с объектами и вывод:
+data: {
+                show: false,
+                img1:'img/what-a-bim-3.png', // путь до картинки
+         массив cars: [
+                    {model: "BMW", speed:250},
+                    {model: "Audi", speed:220},
+                    {model: "Mersedes", speed:230},
+                    {model: "Зэпор", speed:30}
+                ]
+            },
+<li v-for="(item, i) -для вывода индекса in cars">{{i}} Модель:{{item.model}} скорость-{{item.speed}}</li> - вывод всех моделей
