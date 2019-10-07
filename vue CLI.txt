@@ -1,0 +1,22 @@
+npm instal
+vue init webpack-simple name_folder
+заходим в name_folder
+npm install
+npm run dev
+
+Создание компонентов:
+ГЛОБАЛЬНЫЙ=>
+-создаем в src файл.vue в файле в тэге template создаем что-нибудь
+-импортируем в main.js => import Example from './example.vue'
+-создаем компонент => Vue.component('app-example',Example)
+Example это название импортируемого файла
+-в App.vue - пишем в тэге название нашего компонента <app-example>
+
+
+
+
+
+
+vue create название-проекта
+vue inspect > webpack.js
+npm run serve или build или lint - лок.сервер, конечный сбор, проверка ошибок

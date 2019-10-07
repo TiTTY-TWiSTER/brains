@@ -1,0 +1,27 @@
+переменные со значениями из формы
+ var email = $('#email').val().trim(); //trim() удаляет пробелы
+ var name = $('#name').val().trim();
+ var phone = $('#phone').val().trim();
+ var message = $('#message').val().trim();
+
+$.ajax({
+  url:'mail.php', -куда отправляется наш запрос
+
+  type:"POST", - каким методом
+
+  cache: false, - кеширование
+
+  data:{'email':email, 'name':name, 'phone':phone, 'message': message}, -ключ и переменная
+в которой лежит значения.Ключ важен для php по нему ищет
+
+  dataType: 'html', - тип отправки данных
+
+  beforeSend: function(){ - прежде чем придет ответ от сервера
+  $("#sendMail").prop('disabled', true); // устанавливает кнопку не активной до ответа от сервера
+				},
+  success: function(data){ - если все удачно выполняем то что прописали
+в php файле
+  alert(data) //допустим в phpФайле мы прописали echo "привет"
+// после отправки формы и успешной ее обработки привет выведется в alert
+  }
+})
