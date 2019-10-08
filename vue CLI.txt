@@ -13,8 +13,21 @@ Example это название импортируемого файла
 -в App.vue - пишем в тэге название нашего компонента <app-example>
 
 
+ЛОКАЛЬНЫЙ=>
+-создаем в src файл.vue в файле в теге template создаем что-нибудь
+-импортируем в тэге script => import Example from './example.vue'
+-в export default{
+	components:{
+		'app-example': Example
+	}
+}
+-используем в теге <template>  <app-example></app-example>   </template>
 
-
+-- добавляем в продакшн --
+-npm run build - создает папку dict
+-из папки dict берем файл build.js и заливаем его на сайт
+-в нем уже инициализирован vue и стили и все доп.плагины
+-добавляем в html <div id="app"></div>  - ВСЁ!
 
 
 vue create название-проекта
