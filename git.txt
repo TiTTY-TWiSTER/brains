@@ -10,7 +10,7 @@ git push origin название ветки (git push origin master) - закачать файлы на удал
 git branch branchName - создать новую ветку
 git checkout branchName - сменить ветку
 
-GitGub
+GitHub
 —оздать репозиторий
 —в€зать с папкой на компе (ѕункт Еor push an existing repository from the command line)
 
@@ -22,10 +22,18 @@ ll - все содержимое где сейчас находишьс€ или dir
 cd .. - назад из папки 
 cd названиеѕапки - заходит в папку
 
--- заливаем на гитхаб через консоль--
+-- заливаем на гитхаб через консоль --
 git init
 git add --all
 git commit -a -m 'first commit'
 git remote add origin https://github.com/user/project.git !! помен€ть https на свой линк на репозиторий
 git pull --rebase origin master
 git push origin master
+
+-- откат --
+git log - просмотреть историю коммитов
+git checkout (и id коммита который хотим просмотреть) 6a28d66 - дл€ просмотра
+git checkout master - вернутьс€ обратно
+git revert (id коммита который нужно отменить) 6a28d66 - отмена коммита не удаление
+:wq - выйти из редактора
+git reset (id коммита который нужно отменить) 6a28d66 --hard - удал€ет коммиты с откатом файлов
