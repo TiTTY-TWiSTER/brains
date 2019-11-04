@@ -1,0 +1,18 @@
+localStorage.setItem('name','0')  - добавл€ем в локальное хранилище ключ-значение
+
+localStorage.getItem('name') - получаем value по ключу name
+
+ var dataValue=parseInt(localStorage.getItem('name'))+ 1 - переводим строковое значение в число и добавл€ем +1
+
+localStorage.setItem('num', dataValue) - мен€ем значение localStorage
+
+removeItem('name') Ц удалить данные с ключом name
+
+var car = {
+	doors:4,
+	speed:280,
+	price: 500000,
+	name:'Ferrari'
+}
+localStorage.setItem('car',JSON.stringify(car)) - записали объект в строку
+console.log(JSON.parse(localStorage.getItem('car')).name) - получили Ferrari
