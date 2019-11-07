@@ -1,3 +1,4 @@
+npm install -g @vue/cli
 npm instal
 vue init webpack-simple name_folder
 заходим в name_folder
@@ -18,7 +19,7 @@ Example это название импортируемого файла
 -импортируем в тэге script => import Example from './example.vue'
 -в export default{
 	components:{
-		'app-example': Example
+		'app-example': Example,
 	}
 }
 -используем в теге <template>  <app-example></app-example>   </template>
@@ -29,7 +30,57 @@ Example это название импортируемого файла
 -в нем уже инициализирован vue и стили и все доп.плагины
 -добавляем в html <div id="app"></div>  - ВСЁ!
 
-
+scoped для <style> тобишь <style scoped> - стили только внутри компонента
 vue create название-проекта
 vue inspect > webpack.js
 npm run serve или build или lint - лок.сервер, конечный сбор, проверка ошибок
+
+Базовые ПАКЕТЫ:
+ 1 - Jquery
+	import JQuery from 'jquery'
+ 	let $ = JQuery
+
+ 2 - Модальное окно https://github.com/euvl/vue-js-modal
+	npm install vue-js-modal --save	
+	import VModal from 'vue-js-modal'
+	Vue.use(VModal)
+
+ 3 - bootstrap https://bootstrap-vue.js.org/docs
+	npm install vue bootstrap-vue bootstrap
+	import 'bootstrap/dist/css/bootstrap.css'
+	import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+ 4 - lazyload подгрузка картинок https://github.com/hilongjw/vue-lazyload
+	npm i vue-lazyload -S
+	import VueLazyload from 'vue-lazyload'
+	Vue.use(VueLazyload)
+
+ 5 - scrollto скрол до элемента https://www.npmjs.com/package/vue-scrollto
+	npm install --save vue-scrollto
+	var VueScrollTo = require('vue-scrollto'); 
+	Vue.use(VueScrollTo)
+ 6 - Vuerouter
+	npm install vue-router
+	import VueRouter from 'vue-router'
+	Vue.use(VueRouter)
+
+	--в main.js--: //создаем массив с путями
+		const routes = [
+	{path:'/home',component:home}, //пишем сам путь и в него импортируемый нами
+компонент
+	{path:'/shit',component:shit}
+	]
+	//экземпляр объекта роутера
+	const router = new VueRouter({
+	  routes,
+	  mode: 'history'
+	})
+	new Vue({
+  el: '#app',  
+  render: h => h(App),
+  router //это дописали мы
+})
+	-- в App.vue--
+	<router-link to="/home">Home</router-link> // обычные ссылки
+        <router-link to="/shit">this shit</router-link>
+	<router-view></router-view>// здесь отображение компонентов этих ссылок
