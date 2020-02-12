@@ -1,4 +1,4 @@
-GIT
+giGIT
 
 gin clone и вставляем ссылку с гитхаба - копирует папку на комп из репозитория гитхаба
 
@@ -29,7 +29,7 @@ git commit -a -m 'first commit'
 git remote add origin https://github.com/user/project.git !! поменять https на свой линк на репозиторий
 git pull --rebase origin master
 git push origin master
-
+//если сменился url то git remote rm origin а потом git remote add origin и ссылку на новый
 -- откат --
 git log - просмотреть историю коммитов
 git checkout (и id коммита который хотим просмотреть) 6a28d66 - для просмотра
