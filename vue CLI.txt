@@ -84,3 +84,12 @@ npm run serve или build или lint - лок.сервер, конечный сбор, проверка ошибок
 	<router-link to="/home">Home</router-link> // обычные ссылки
         <router-link to="/shit">this shit</router-link>
 	<router-view></router-view>// здесь отображение компонентов этих ссылок
+
+ 7 - Axios - https://medium.com/devschacht/%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83%D0%B5%D0%BC-axios-%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B5-%D1%81-vue-js-3bc45464c460
+	npm install axios
+	import axios from 'axios' - в используемом компоненте
+	axios.get('url').then((response)=>{ 
+			this.peremennaya = []  
+		          this.peremennaya.push(response.data)
+		          console.log(this.peremennaya)		          
+		        })
