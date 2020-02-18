@@ -9,6 +9,8 @@ git push origin название ветки (git push origin master) - закачать файлы на удал
 
 git branch branchName - создать новую ветку
 git checkout branchName - сменить ветку
+git branch -v - посмотреть ветки
+git merge название ветки - слияние веток (делается из мастера потом пушится)
 
 GitHub
 Создать репозиторий
