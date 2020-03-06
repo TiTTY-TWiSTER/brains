@@ -1,0 +1,12 @@
+//установка
+npm install -g nuxt
+npm init nuxt-app name_folder
+
+//сборка
+ npm run generate - а затем просто загрузите каталог dist на свой хостинг! Вот и все! Вместе с SSR
+
+//роутинг по умолчанию из коробки
+1. создаем папку в папке pages например name_folder
+2. в этой папке создаем файл index.vue
+3. в папке pages в файле index.vue - <router-link to="/name_folder">анкорный текст</router-link>
+
