@@ -51,6 +51,7 @@ async asyncData({ $axios }){
 	var data = await $axios.$get('https://jsonplaceholder.typicode.com/users');
 		return{data}
      },
+
 --- КАК РАБОТАЕТ FETCH в NUXT ---
 data(){
 	return{
@@ -63,3 +64,12 @@ async asyncData(){
 		datas:data
 	    }
 	}
+
+// layouts
+создаем файл.vue в папке layouts
+-> (прописываем стили и компоненты, которые нужны в нашем layouts)
+-> в корневом диве в конце пишем <nuxt />
+
+-> в странице где хотим использовать этот layouts пишем в script -> export default {
+	layout:'его-название-без-точки'
+}
