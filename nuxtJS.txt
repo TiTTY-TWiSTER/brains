@@ -27,7 +27,7 @@ npm init nuxt-app name_folder
 //import как происходит
 import Some from '~/components/file.vue'  - тильда указывает на корень
 
-//страница not found
+//страница not found 404
 в папке layouts создаем файл error.vue
 
 //в корне проекта есть конфиг nuxt.config.js
@@ -62,6 +62,7 @@ data(){
      },
 async asyncData({ $axios }){
 	var data = await $axios.$get('https://jsonplaceholder.typicode.com/users');
+	*запросов может много но return ОДИН, в него и добавляем все переменные с запросом
 		return{data}
      },
 
