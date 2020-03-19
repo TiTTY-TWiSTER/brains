@@ -43,6 +43,10 @@ import Some from '~/components/file.vue'  - тильда указывает на
   <router-link to="/a" exact> - exact определяет когда ссылка активна все зависимости от с /a/ или /a.
   <router-link no-prefetch to="/page"> - no-prefetch заставляет подгружать страницу только при обращении,а не при загрузке страницы
 
+! для передачи параметров(query,params) в методе но не async-> this.$router.push({ 
+			 		query: { search: true }
+			 	}) 
+и принять в другом компоненте this.$route.query.search -> выдаст true
 	
 //axios https://axios.nuxtjs.org/setup
     npm install @nuxtjs/axios
