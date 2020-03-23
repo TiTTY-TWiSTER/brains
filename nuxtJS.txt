@@ -88,6 +88,22 @@ async asyncData(){
 				console.log(data)			
 										
 			},
+ !!! через POST необходимо передавать данные через FormData -> (также необходимо установить пакет npm install --save form-data)
+	var FormData = require('form-data');
+	var formData = new FormData();
+        formData.append('category', 'comedy');
+
+fetch('https://maximum-movies.com/php-films-res',{
+          method: 'post',
+          body:formData
+       }).then((res)=>{
+        console.log(res.json())
+      })
+	.then((data) => {
+          console.log(data)         
+            return data;
+        })
+
  *** для доступа определенных ресурсов к api в .htaccess можно прописать следующее ->
 <IfModule mod_headers.c>
     Header set Access-Control-Allow-Origin http://название ресурса
