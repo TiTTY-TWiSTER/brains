@@ -9,15 +9,29 @@ PotreeConverter.exe C:/CC.las -o C:/data_converted
 
 !можно добавить --incremental в конце и одно одно облако объеденит с новым
 
-// нужные для его работы скрипты
-	<script src="assets/app/clouds/libs/jquery/jquery-3.1.1.min.js"></script>
-	<script src="assets/app/clouds/libs/three.js/build/three.min.js"></script>
-	<script src="assets/app/clouds/libs/other/BinaryHeap.js"></script>
-	<script src="assets/app/clouds/libs/tween/tween.min.js"></script>
-	<script src="assets/app/clouds/libs/proj4/proj4.js"></script>
-	<script src="assets/app/clouds/libs/potree/potree.js"></script>
+// нужные для его работы скрипты https://github.com/potree/potree/tree/develop/libs
+
+    	<script src="/assets/app/clouds/libs/jquery/jquery-3.1.1.min.js"></script>
+	<script src="/assets/app/clouds/libs/spectrum/spectrum.js"></script>
+	<script src="/assets/app/clouds/libs/jquery-ui/jquery-ui.min.js"></script>
+	<script src="/assets/app/clouds/libs/three.js/build/three.min.js"></script>
+	<script src="/assets/app/clouds/libs/other/BinaryHeap.js"></script>
+	<script src="/assets/app/clouds/libs/tween/tween.min.js"></script>
+	<script src="/assets/app/clouds/libs/d3/d3.js"></script>
+	<script src="/assets/app/clouds/libs/proj4/proj4.js"></script>
+	<script src="/assets/app/clouds/libs/openlayers3/ol.js"></script>
+	<script src="/assets/app/clouds/libs/i18next/i18next.js"></script>
+	<script src="/assets/app/clouds/libs/jstree/jstree.js"></script>
+	<script src="/assets/app/clouds/libs/potree/potree.js"></script>
+	<script src="/assets/app/clouds/libs/plasio/js/laslaz.js"></script>
 // CSS 
-	<link rel="stylesheet" type="text/css" href="assets/app/clouds/libs/potree/potree.css">
+	<link rel="stylesheet" type="text/css" href="/assets/app/clouds/libs/potree/potree.css">
+	<link rel="stylesheet" type="text/css" href="/assets/app/clouds/libs/jquery-ui/jquery-ui.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/app/clouds/libs/openlayers3/ol.css">
+	<link rel="stylesheet" type="text/css" href="/assets/app/clouds/libs/spectrum/spectrum.css">
+	<link rel="stylesheet" type="text/css" href="/assets/app/clouds/libs/jstree/themes/mixed/style.css">
+    
+    	<link rel="stylesheet" type="text/css" href="/assets/app/clouds/libs/potree/potree.css">
 
 
 // GITHUB https://github.com/potree/potree
