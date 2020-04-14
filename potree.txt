@@ -1,0 +1,23 @@
+PotreeConverter.exe C:/CC.las -o C:/data_converted
+
+- первое это exe файл через который происходит конвертация
+скачать его можно здесь https://github.com/potree/PotreeConverter/releases/tag/1.6_2018_07_29
+
+- второе это путь до облака точек в формате .las
+
+- третье это куда будут записанны файлы после конвертации
+
+!можно добавить --incremental в конце и одно одно облако объеденит с новым
+
+// нужные для его работы скрипты
+	<script src="assets/app/clouds/libs/jquery/jquery-3.1.1.min.js"></script>
+	<script src="assets/app/clouds/libs/three.js/build/three.min.js"></script>
+	<script src="assets/app/clouds/libs/other/BinaryHeap.js"></script>
+	<script src="assets/app/clouds/libs/tween/tween.min.js"></script>
+	<script src="assets/app/clouds/libs/proj4/proj4.js"></script>
+	<script src="assets/app/clouds/libs/potree/potree.js"></script>
+// CSS 
+	<link rel="stylesheet" type="text/css" href="assets/app/clouds/libs/potree/potree.css">
+
+
+// GITHUB https://github.com/potree/potree
