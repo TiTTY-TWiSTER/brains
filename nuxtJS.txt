@@ -87,8 +87,8 @@ async asyncData(){
 			},
  !!! через POST необходимо передавать данные через FormData -> (также необходимо установить пакет npm install --save form-data)
 	var FormData = require('form-data');
-	var formData = new FormData();
-        formData.append('category', 'comedy');
+	var obj = new FormData();
+        obj.append('category', 'comedy');
 
 fetch('https://maximum-movies.com/php-films-res',{
           method: 'post',
