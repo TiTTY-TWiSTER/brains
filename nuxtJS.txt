@@ -131,3 +131,37 @@ fetch('https://maximum-movies.com/php-films-res',{
 	}
 ДАЛЕЕ можно на основании этих данных делать в async asyncData запросы POST,GET и получать данные для серверного рендеринга COOL!!!
 
+	-------- ДИНАМИЧЕСКИЕ meta Тэги --------
+
+- делаем асинхронный запрос в async asyncData (GET или POST) делаем return данных; -> пример
+	async asyncData({params}){
+	var name = params.video //получили параметры переданные в корневой странице в папке
+
+	var FormData = require('form-data'); //собрали данные для отправки через FormData
+	var obj = new FormData();
+	obj.append('nameFilm', name);
+
+	var req = await fetch('https://maximum-movies.com/search-for-async',{ //делаем POST запрос
+	          method: 'post',
+	          body:obj
+		       }).then((res) => {
+		            return res.json();
+		        })
+		        .then((data) => {
+		          console.log(data)
+		            return data;
+		        })
+			return{req}
+},
+	
+
+- ниже после async asyncData прописываем в head(){
+		return{
+			title: this.req.name + 'что нибудь что еще надо',
+			meta:[
+				{ hid: 'description', name: 'description', content: this.req.description + 'что-то еще' }
+			]
+		}
+	}
+
+
