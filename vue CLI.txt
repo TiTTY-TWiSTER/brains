@@ -93,3 +93,26 @@ npm run serve или build или lint - лок.сервер, конечный сбор, проверка ошибок
 		          this.peremennaya.push(response.data)
 		          console.log(this.peremennaya)		          
 		        })
+
+	--------- ФИЛЬТРЫ VUE filters ---------
+filters: { // СОЗДАЕМ ФИЛЬТРЫ
+	    capitalize: function(item) {
+	        if (item != " "){
+	        	return item
+	        }
+	    },
+	    trim: function(item){ //вырезание пробелов
+	    	return item.trim()//trim() метод jquery вроде
+	    }
+	},
+methods:{
+	ArrowFilt(data){ //функция фильтр . В data кладется элемент из массива
+		let some = data.filter(this.$options.filters.capitalize) //обращаемся к локальному фильтру 
+		return some // возвращаем значение после фильтра
+	},
+}
+ПРИМЕР:
+<p v-for='(next,index) in ArrowFilt(item.description.split("*"))'>{{next | trim}}</p>// {{element | name_filter}}
+
+ПРИМЕР в DOM сразу:
+<img v-for="img in item.img.split('*').filter($options.filters.capitalize)" :src="img">
