@@ -34,7 +34,8 @@ import Some from '~/components/file.vue'  - тильда указывает на
  - mode:'universal'  это с SSR
  -loading  это ползунок загрузки вверху страницы
 
-//роутинги
+-------------------роутинги---------------------------------------------------
+
 @click='$router.push("/")' на самом элементе или можно прописать в методе -> this.$router.push("/названиеСТР")
   
 в теге <a href="page">page</a> - будет с перезагрузкой страницы
@@ -52,7 +53,8 @@ import Some from '~/components/file.vue'  - тильда указывает на
 			 	}) 
 и принять в другом компоненте this.$route.query.search -> выдаст true
 	
-//axios https://axios.nuxtjs.org/setup
+------------------------axios https://axios.nuxtjs.org/setup-------------------------------
+
     npm install @nuxtjs/axios
     в файле nuxt.config.js -> 
 	module.exports = {
@@ -61,7 +63,7 @@ import Some from '~/components/file.vue'  - тильда указывает на
           ],
        }
 
---- КАК РАБОТАЕТ AXIOS в NUXT -> пример ---
+----------------КАК РАБОТАЕТ AXIOS в NUXT -> пример -----------------------------------
 
 async asyncData({ $axios }){
 	var data = await $axios.$get('https://jsonplaceholder.typicode.com/users');
@@ -71,7 +73,7 @@ async asyncData({ $axios }){
 
 В methods через this если изначально установлен -> await this.$axios.$get('http://someUrl.com')
 
---- КАК РАБОТАЕТ FETCH в NUXT ---
+------------- КАК РАБОТАЕТ FETCH в NUXT ------------------------------------------------------
 
 async asyncData(){
    var data = await fetch('https://jsonplaceholder.typicode.com/users?_limit=5').then(res=>res.json());
@@ -101,12 +103,14 @@ fetch('https://maximum-movies.com/php-films-res',{
             return data;
         })
 
- *** для доступа определенных ресурсов к api в .htaccess можно прописать следующее ->
+------для доступа определенных ресурсов к api в .htaccess можно прописать следующее -> ---------------------------
+
 <IfModule mod_headers.c>
     Header set Access-Control-Allow-Origin http://название ресурса
 </IfModule>
 
-// layouts
+-------------------layouts--------------------------------------------------------
+
 создаем файл.vue в папке layouts
 -> (прописываем стили и компоненты, которые нужны в нашем layouts)
 -> в корневом диве в конце пишем <nuxt />
@@ -115,7 +119,8 @@ fetch('https://maximum-movies.com/php-films-res',{
 	layout:'его-название-без-точки'
 }
 
-// --- ОДНА страница с приемом и отображением динамических параметров --- //
+-------- ОДНА страница с приемом и отображением динамических параметров ------------------------------
+
 	<button @click='change(item.id)'>Редактировать</button> // передаем какие-то данные методу в нашем случаи id полученный откуда-то
 
 	methods:{
@@ -131,7 +136,7 @@ fetch('https://maximum-movies.com/php-films-res',{
 	}
 ДАЛЕЕ можно на основании этих данных делать в async asyncData запросы POST,GET и получать данные для серверного рендеринга COOL!!!
 
-	-------- ДИНАМИЧЕСКИЕ meta Тэги --------
+-------- ДИНАМИЧЕСКИЕ meta Тэги ----------------------------------------------------------------
 
 - делаем асинхронный запрос в async asyncData (GET или POST) делаем return данных; -> пример
 	async asyncData({params}){
@@ -164,4 +169,8 @@ fetch('https://maximum-movies.com/php-films-res',{
 		}
 	}
 
+----------------LAZY-LOAD для всего----------------------------
+
+npm i nuxt-lazy-load
+https://gitlab.com/broj42/nuxt-lazy-load#README
 
