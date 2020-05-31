@@ -1,0 +1,63 @@
+-------------------- Базовый Пример --------------------
+в папке store создаем файл:
+
+	- корневой index.js =>
+		import Vue from 'vue'
+		import Vuex from 'vuex'
+		Vue.use(Vuex)
+
+		 const store = () => new Vuex.Store({
+		 	state:{
+		 		counter:0
+		 	},
+
+		 	mutations:{
+		 		increment(state){
+		 			state.counter++
+		 		}
+		 	}
+		)
+		export default store
+
+затем в компонентах =>  <h3>Счётчик {{$store.state.counter}}</h3>
+			<button class="btn btn-primary" @click='$store.commit("increment")'>+</button>
+
+
+	- либо под конкретную задачу модуль с названием, допустим counter.js
+
+		export const state = ()=>({
+			counter:0
+		})
+
+		export const mutations = {
+			increment(state){
+				state.counter++
+			}
+		}
+затем в компонентах => 	<h3>Счётчик {{$store.state.counter.counter}}</h3>
+			<button class="btn btn-primary" @click='$store.commit("counter/increment")'>+</button>
+
+-------------------- Пример с асинхронным запросом и хранением в store -------------------- 
+<div class="container">
+	<div v-for='item in $store.state.posts.posts'> //перебираем хранилище store-a, модуля с названием posts.js
+		<h3>{{item.title}}</h3>
+	</div>
+</div>
+
+export default{
+	async asyncData({store,$axios}){ //добавляем необходимый контекст store для обращения к методу и axios(установлен) для запроса
+		var data  = await $axios.$get('https://jsonplaceholder.typicode.com/posts?_limit=5')
+		store.commit('posts/increment', data) //вызываем метод стора и перредаем в него результат запроса
+		return {data}	
+	}
+}
+!!!!! что бы это все работало создаем модуль в папке store с названием posts.js
+export const state = ()=>({
+	posts:[]
+})
+
+export const mutations = {
+	increment(state,data){
+		state.posts = data
+	}
+}
