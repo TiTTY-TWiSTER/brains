@@ -47,7 +47,7 @@
 export default{
 	async asyncData({store,$axios}){ //добавляем необходимый контекст store для обращения к методу и axios(установлен) для запроса
 		var data  = await $axios.$get('https://jsonplaceholder.typicode.com/posts?_limit=5')
-		store.commit('posts/increment', data) //вызываем метод стора и перредаем в него результат запроса
+		store.commit('posts/increment', data) //вызываем метод мутации стора и передаем в него результат запроса
 		return {data}	
 	}
 }
@@ -61,3 +61,44 @@ export const mutations = {
 		state.posts = data
 	}
 }
+
+-------------------- actions --------------------
+В actions возможна асинхронность, поэтому они не могут воздействовать на state на прямую, а воздействуют через mutations
+
+export const actions = {
+	async fetchPosts( ctx, limit=5 ){//контекст обязательный параметр, limit динамический по умолчанию равен 5
+		const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=' + limit)
+
+		const posts = await res.json()
+		ctx.commit('increment',posts) // передаем в метод мутации increment результат запроса
+	}
+}
+export const state = ()=>({
+	posts:[]
+})
+export const mutations = {
+	increment(state,data){
+		state.posts = data
+	}
+}
+
+Далее в компоненте несколько вариантов:
+1 - в хуке mounted() без серверного рендеринга =>
+async mounted(){
+	this.$store.dispatch('posts/fetchPosts',20) //20 это динамический параметр в экшоне fetchPosts стора после контекста
+}
+	и перебираем
+
+<div v-for='post in $store.state.posts.posts'>
+	<h3>{{post.title}}</h3>
+</div>
+
+2 - в async asyncData с серверным рендерингом =>
+async asyncData({store}){
+	await store.dispatch('posts/fetchPosts',1) //1 это динамический параметр в экшоне fetchPosts стора после контекста
+}
+	и перебираем
+
+<div v-for='post in $store.state.posts.posts'>
+	<h3>{{post.title}}</h3>
+</div>
