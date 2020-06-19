@@ -105,8 +105,11 @@ fetch('https://maximum-movies.com/php-films-res',{
 
 ------для доступа определенных ресурсов к api в .htaccess можно прописать следующее -> ---------------------------
 
+# ниже для возможности запросов по api
 <IfModule mod_headers.c>
-    Header set Access-Control-Allow-Origin http://название ресурса
+    SetEnvIf Origin "http(s)?://(www\.)?(films-generator.ru|localhost:3000|spb.maximum-seo.ru)$" AccessControlAllowOrigin=$0
+    Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
+    Header merge Vary Origin
 </IfModule>
 
 -------------------layouts--------------------------------------------------------
@@ -174,3 +177,17 @@ fetch('https://maximum-movies.com/php-films-res',{
 npm i nuxt-lazy-load
 https://gitlab.com/broj42/nuxt-lazy-load#README
 
+------------------ HTTPS ----------------
+https://github.com/nuxt-contrib/redirect-ssl#readme
+
+1- npm install redirect-ssl
+2- в nuxt.config.js =>
+
+module.exports = {
+    serverMiddleware: [
+    'redirect-ssl'
+  ],
+  mode: 'universal',
+  /*
+  ** Headers of the page
+  */
