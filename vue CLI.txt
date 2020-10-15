@@ -116,3 +116,27 @@ methods:{
 
 ѕ–»ћ≈– в DOM сразу:
 <img v-for="img in item.img.split('*').filter($options.filters.capitalize)" :src="img">
+
+---------- —јћќƒ≈Ћ№Ќџ… фильтр вырезание дублей ------------
+1 - обычный массив значений:
+	var arr = [1,1,1,2,3]
+		const sortArr = Array.from(new Set(arr))//вырезание дублей из массива
+		console.log(sortArr)//[1,2,3]
+
+2 - массив объектов:
+	var arr2 = [ {ключ:не важно что1}, {ключ:не важно что1}, {ключ:не важно что2} ]
+	const sortArr2 =  Array.from(new Set(arr2.map(JSON.stringify))).map(JSON.parse);//вырезание дублей из массива ƒЋя ќЅЏ≈ “ќ¬
+	console.log(sortArr2)//[ {ключ:не важно что1}, {ключ:не важно что2}]
+
+---------- ƒЋя работы async await функций необходимо -----------
+1 - установить npm install --save-dev babel-plugin-transform-runtime
+2 - в файле .babelrc прописать следующие:
+{
+  "plugins": [
+    ["transform-runtime", {
+      "regenerator": true
+    }]
+  ]
+}
+P.S. нашЄл этот вариант здесь 
+https://stackoverflow.com/questions/33527653/babel-6-regeneratorruntime-is-not-defined

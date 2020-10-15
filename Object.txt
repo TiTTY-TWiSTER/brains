@@ -1,0 +1,71 @@
+var obj = {category:'comedy'}  //объект obj
+
+        let new_item = Object.entries(obj)[0]    // получаем массив ключ-значение объекта ['category','comedy']
+
+			Object.keys(obj)	// только ключ объекта		
+			Object.values(obj)	// только значения
+
+        let ls = {} // создаем объект
+
+          ls[new_item[0]] = new_item[1] + "some text..." //таким образом можно положить ключ в объект=>
+
+объект[в таких скобах кладем переменную и будет ключ] = затем любое допустимое значение
+
+
+---------- __proto__  https://learn.javascript.ru/prototype-inheritance------------------------- 
+ПРИМЕР 1: 
+let animal = {
+  jumps: null
+};
+
+let rabbit = {
+  __proto__: animal,
+  jumps: true
+};
+
+alert( rabbit.jumps ); // true
+
+delete rabbit.jumps; // удаление свойства
+
+alert( rabbit.jumps ); // null т.к. rabbit унаследовал свойство от animal
+
+delete animal.jumps; // удалили у унаследованного объекта
+
+alert( rabbit.jumps ); // undefined
+
+ПРИМЕР2:
+let hamster = {
+  stomach: [],
+
+  eat(food) {
+    this.stomach.push(food);
+  }
+};
+
+let speedy = {
+  __proto__: hamster
+};
+
+let lazy = {
+  __proto__: hamster
+};
+
+
+speedy.eat("apple");
+alert(speedy.stomach);// apple
+alert(lazy.stomach);// apple т.к. у них один унаследованный массив в который пушится свойства через метод eat
+
+Сделаем следующие =>
+
+lazy.stomach = [] //добавим в объект свой массив, даже с тем же названием
+//т.к объект ссылается на прототип в том случае, если прочитать свойство obj или вызвать метод, которого не существует
+//но сейчас оно есть
+lazy.eat('some_food');
+lazy.stomach // ['some_food']
+speedy.stomach // ['apple']
+
+
+!!!!!!! for(key in speedy){ // for in перебирает свои и унаследованные свойства
+    console.log(key)//stomach eat
+}
+!!!!!! можно удалять, добавлять и перезаписывать методы и свойства. Прототип же используется только для чтения свойств.
